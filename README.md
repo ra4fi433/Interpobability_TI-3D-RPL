@@ -22,7 +22,7 @@ Content about API from these module :
     WebSocket
 
 And there is Submittion of Assignment :
-  [Second Week Assignment](JobSheet2/)
+  [Second Week Assignment](Jobsheet2/)
 
 # Third Week
 
