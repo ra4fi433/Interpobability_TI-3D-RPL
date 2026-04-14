@@ -1,0 +1,53 @@
+openapi: 3.0.0 
+info:
+  title: Student API
+  description: API untuk manajemen mahasiswa 
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+    # description: Access from your Browser
+
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+paths:
+  /students:
+    get :
+      summary: Mengambil daftar mahasiswa 
+      responses:
+        ' 200':
+           description: Berhasil
+    post:
+      summary: Menambahkan mahasiswa 
+      responses:
+        ' 201':
+           description: Mahasiswa berhasil ditambahkan
+  /students/{id}:
+    get:
+      summary: Mengambil detail mahasiswa 
+    parameters:
+      - name: id 
+        in: path 
+        required: false
+        schema:
+          type: integer
+    responses:
+      '200':
+          description: Detail mahasiswa
+          # content:
+          #   application/json:  # <--- Make sure this block exists
+          #     schema:
+          #       type: object
+          #       properties:
+          #         id:
+          #           type: integer
+          #         name:
+          #           type: string

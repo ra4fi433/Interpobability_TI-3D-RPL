@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package api;
+
+service ProductService {
+    rpc GetProduct(UserRequest) returns (UserResponse);
+    rpc CreateProduct(CreateProductRequest) returns (UserResponse);
+}
+message UserRequest {
+    int32 product_id = 1;
+}
+
+message CreateProductRequest {
+    string product_name = 1;
+}
+
+message UserResponse {
+    int32 id = 1;
+    string product_name = 2;
+}

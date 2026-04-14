@@ -1,0 +1,33 @@
+openapi: 3.0.0 
+info:
+  title: Books API
+  description: API untuk manajemen buku 
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /books:
+    get :
+      summary: Mengambil daftar buku 
+      responses:
+        '200':
+           description: Berhasil
+    post:
+      summary: Menambahkan buku 
+      responses:
+        '201':
+           description: Buku berhasil ditambahkan
+  /books/{id}:
+    get:
+     summary: Mengambil detail buku 
+     parameters:
+       - name: id 
+         in: path 
+         required: true 
+         schema:
+           type: integer
+    responses:
+      '200':
+        description: Detail buku

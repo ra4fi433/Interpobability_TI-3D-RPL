@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Demo</title>
+</head>
+<body>
+  <h2>WebSocket App</h2>
+
+  <!-- USER INFO -->
+  <div>
+    <input id="user_id" placeholder="User ID (student_1)" />
+    <input id="class_id" placeholder="Class (A)" />
+    <button onclick="connectWS()">Connect</button>
+  </div>
+
+  <hr>
+
+  <!-- TASK NOTIFICATION -->
+  <h3>Task Notifications</h3>
+  <ul id="task_list"></ul>
+
+  <hr>
+
+  <!-- CHAT -->
+  <h3>Chat</h3>
+  <input id="room_id" placeholder="Room ID (chat_room_123)" />
+  <button onclick="joinChat()">Join Room</button>
+
+  <br><br>
+
+  <input id="message" placeholder="Type message..." />
+  <button onclick="sendChat()">Send</button>
+
+  <ul id="chat_list"></ul>
+
+  <script>
+    let ws;
+
+    function connectWS() {
+      const user_id = document.getElementById("user_id").value;
+      const class_id = document.getElementById("class_id").value;
+
+      ws = new WebSocket("ws://localhost:3000");
+
+      ws.onopen = () => {
+        console.log("Connected");
+
+        ws.send(JSON.stringify({
+          type: "INIT",
+          user_id,
+          class_id
+        }));
+      };
+
+      ws.onmessage = (event) => {
+        const msg = JSON.parse(event.data);
+        console.log("Received:", msg);
+
+        // =========================
+        // TASK NOTIFICATION
+        // =========================
+        if (msg.type === "NEW_TASK") {
+          const li = document.createElement("li");
+          li.innerText = `📌 ${msg.data.title} (Deadline: ${msg.data.deadline})`;
+
+          document.getElementById("task_list").appendChild(li);
+        }
+
+        // =========================
+        // CHAT MESSAGE
+        // =========================
+        if (msg.type === "NEW_CHAT") {
+          const li = document.createElement("li");
+          li.innerText = `${msg.data.sender}: ${msg.data.message}`;
+
+          document.getElementById("chat_list").appendChild(li);
+        }
+      };
+
+      ws.onclose = () => {
+        console.log("Disconnected");
+      };
+    }
+
+    function joinChat() {
+      const room_id = document.getElementById("room_id").value;
+
+      ws.send(JSON.stringify({
+        type: "JOIN_CHAT",
+        room_id
+      }));
+    }
+
+    function sendChat() {
+      const room_id = document.getElementById("room_id").value;
+      const message = document.getElementById("message").value;
+
+      ws.send(JSON.stringify({
+        type: "SEND_CHAT",
+        room_id,
+        message
+      }));
+    }
+  </script>
+</body>
+</html>
