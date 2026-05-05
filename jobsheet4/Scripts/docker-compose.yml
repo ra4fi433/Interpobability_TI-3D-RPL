@@ -1,0 +1,30 @@
+version: '3.8'  # Use the latest version of the Compose file format
+# ---------------------------------------Service definitions---------------------------------------
+services:
+ #----------------------------------------Java Dev service definitions---------------------------------------
+  java-dev:
+    build: . # Build the image from the Dockerfile in the current directory
+    container_name: java_debug_env # Name the container for easier reference
+    ports:
+      - "${APP_PORT}:8080"
+      # - "${DEBUG_PORT}:5005"
+    environment: # Set the JAVA_TOOL_OPTIONS environment variable to enable remote debugging
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 
+    stdin_open: true # Keep the container's standard input open
+    tty: true # Allocate a pseudo-TTY for the container
+ #----------------------------------------Java Dev service definitions---------------------------------------
+
+# ---------------------------------------Node Js as UI- service definitions---------------------------------------
+  node-ui:
+    image: node:current-slim # Use the latest version of Node.js
+    working_dir: /app # Set the working directory inside the container
+    volumes:  # Mount the current directory to /app in the container
+      - ./node-ui:/app
+    command: sh -c "npm install && node server.js" # Install dependencies and start the Node.js server
+    ports:
+      - "3000:3000" # Map port 3000 of the container to port 3000 on the host
+    depends_on: 
+      - java-dev # Ensure the Node.js service starts after the Java service
+# ---------------------------------------Node Js as UI- service definitions---------------------------------------
+
+# ---------------------------------------End of service definitions---------------------------------------
