@@ -35,3 +35,15 @@ here the [Submitted Assignment](jobsheet4/README.md)
       - Swing-AWT
     Node.js
 
+# Fifth Week
+This assignment about JSON-RPC with tech stack in:
+
+python, Node.js, and PHP
+
+here the [Submitted Assignment](jobsheet5/README.md)
+
+
+    Node.js as client
+    Python as server and client
+    PHP 8 as client
+

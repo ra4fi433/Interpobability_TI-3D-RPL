@@ -19,7 +19,7 @@ What's in Project :
 
 these result of practicing and solve task of assignment from jobsheet
 
-![Alt text](docs/image/result.png)
+![Alt text](docs/result.png)
 
 For Documentation and Code Scripts :
     Documentation and Assigment Report :
