@@ -16,14 +16,35 @@ there is all of courses
 and there is segmentation of each courses Scripts
 
 # Rest API and Open API
+for script : 
+
+[rest api](RESTful-API/server.js)
+
+[openapi](openapi/openapi.yaml)
 
 Sample of Result :
 
 # JSON-RPC
+for scripts :
+
+Server of RPC
+
+[server of rpc](json-rpc/server/server.py)
+
+Client of RPC
+
+[python](json-rpc/client/python-c/client.py)
+
+[Node.Js](json-rpc/client/node/client.js)
+
+[PHP](json-rpc/client/php/client.php)
 
 Sample of Result :
 
 # Data Serilization 
+for script :
+
+[Data Serilization](data_serilization/data-s.js)
 
 Sample of Result :
 
