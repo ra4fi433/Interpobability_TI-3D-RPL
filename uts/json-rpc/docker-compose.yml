@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  python-s:
+    build: ./server
+    container_name: python_rpc_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+
+  python-c-task:
+    build: ./client/python-c
+    container_name: python_rpc_client-task
+    ports:
+      - "50000:50000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./client/python-c:/app
+
+  node-client-task:
+    build: ./client/node
+    container_name: node_rpc_client-task
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./client/node:/app
+    depends_on:
+      - python-s
+
+  php-client-task:
+    build: ./client/php
+    container_name: php_rpc_client-task
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./client/php:/app
+    depends_on:
+      - python-s
+
+  # python-c-practice:
+  #   build: ./practice/python-c
+  #   container_name: python_rpc_client-practice
+  #   ports:
+  #     - "51000:51000"
+  #   environment:
+  #     - PYTHONUNBUFFERED=1
+  #   volumes:
+  #     - ./practice/python-c:/app
+
+  # node-client-practice:
+  #   build: ./practice/node
+  #   container_name: node_rpc_client-practice
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./practice/node:/app
+  #   depends_on:
+  #     - python-s
+
+  # php-client-practice:
+  #   build: ./practice/php
+  #   container_name: php_rpc_client-practice
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./practice/php:/app
+  #   depends_on:
+  #     - python-s

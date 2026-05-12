@@ -1,0 +1,197 @@
+openapi: 3.0.3
+
+info:
+  title: Interoperabilitas UTS - Product Management API
+  version: 1.0.0
+  description: |
+    RESTful API sederhana untuk manajemen produk.
+    API ini mendukung operasi CRUD (Create, Read, Update, Delete)
+    menggunakan format JSON.
+
+servers:
+  - url: http://product-api:3000
+    description: Local Development Server
+
+tags:
+  - name: Products
+    description: Operasi CRUD untuk data produk
+
+paths:
+  /products:
+    get:
+      tags:
+        - Products
+      summary: Get Product
+      description: Menampilkan seluruh data produk.
+      responses:
+        '200':
+          description: Berhasil mengambil daftar produk.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+
+    post:
+      tags:
+        - Products
+      summary: Store Product
+      description: Menambahkan produk baru.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+            example:
+              name: Keyboard
+              price: 250000
+              stock: 15
+      responses:
+        '201':
+          description: Produk berhasil ditambahkan.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Produk berhasil ditambahkan
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '400':
+          description: Data input tidak valid.
+
+  /products/{id}:
+    get:
+      tags:
+        - Products
+      summary: Get Product by Id
+      description: Menampilkan detail produk berdasarkan ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID produk.
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Detail produk ditemukan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Produk tidak ditemukan.
+
+    put:
+      tags:
+        - Products
+      summary: Update Product
+      description: Memperbarui data produk berdasarkan ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID produk.
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+            example:
+              name: Mechanical Keyboard
+              price: 500000
+              stock: 8
+      responses:
+        '200':
+          description: Produk berhasil diperbarui.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Produk berhasil diperbarui
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '404':
+          description: Produk tidak ditemukan.
+
+    delete:
+      tags:
+        - Products
+      summary: Delete Product
+      description: Menghapus produk berdasarkan ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID produk.
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Produk berhasil dihapus.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Produk berhasil dihapus
+                  data:
+                    $ref: '#/components/schemas/Product'
+        '404':
+          description: Produk tidak ditemukan.
+
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - id
+        - name
+        - price
+        - stock
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Laptop
+        price:
+          type: number
+          example: 8500000
+        stock:
+          type: integer
+          example: 10
+
+    ProductInput:
+      type: object
+      required:
+        - name
+        - price
+        - stock
+      properties:
+        name:
+          type: string
+          example: Keyboard
+        price:
+          type: number
+          example: 250000
+        stock:
+          type: integer
+          example: 15

@@ -2,10 +2,13 @@
 
 # Documentation
 These Jobsheet contained about JSON-RPC ( REMOTE PROCEDURE CALL)
+
 What is JSON-RPC ?
+
 " protocol of Remote Procedure Call (RPC) used JSON to encoding data. "
 Transport: HTTP atau WebSocket.
-Tipe komunikasi:
+
+Communication Types:
 🔁 Request-Response → client sent request, server answer result.
 ⬆️ Notification → client sent message without waiting response.
 

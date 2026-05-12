@@ -1,0 +1,21 @@
+{
+  "name": "product-api",
+  "version": "1.0.0",
+  "description": "Simple Product CRUD API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "avsc": "^5.7.9",
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1",
+    "protobufjs": "^8.2.0",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {}
+}
