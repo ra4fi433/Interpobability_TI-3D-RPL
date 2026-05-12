@@ -13,6 +13,9 @@ there is all of courses
     - Data Serilization
     - Microservices and Event-Driven Architecture
 
+to read summary and document report :
+[Report File](docs/uts_43325803-M_Raafi_h.pdf)
+
 and there is segmentation of each courses Scripts
 
 # Rest API and Open API
