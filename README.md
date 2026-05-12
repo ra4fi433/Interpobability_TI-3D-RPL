@@ -42,6 +42,17 @@ python, Node.js, and PHP
 
 here the [Submitted Assignment](jobsheet5/README.md)
 
+# Mid-Semester Test
+This assignment about Mid-Semester Test with tech stack in:
+
+      - Node.Js
+      - Docker
+      - Swagger ui
+      - python
+      - php
+
+here the [Submitted Assignment](uts/README.md)
+
 
     Node.js as client
     Python as server and client
