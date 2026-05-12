@@ -32,6 +32,18 @@ Sample of Result :
 
 Sample of Result :
 
+# Getting Started
+
+all of these scripts is controlled by Docker, 
+
+and to run it make sure docker desktop or docker cli have already installed in machine, 
+
+to run these scripts, write and run these commands in terminal :
+
+        docker compose build --no-cache
+        docker compose up -d
+
+
 
 
 
