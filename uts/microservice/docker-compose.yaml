@@ -1,0 +1,42 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"   # Port komunikasi data
+      - "15672:15672" # Dashboard RabbitMQ (guest:guest)
+    networks:
+      - eda-network
+
+  user-service:
+    build: .
+    command: node user-service.js
+    ports:
+      - "3001:3000"
+    networks:
+      - eda-network
+
+  order-service:
+    build: .
+    command: node order-service.js
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    ports:
+      - "3002:3000"
+    depends_on:
+      - rabbitmq
+    networks:
+      - eda-network
+
+  payment-service:
+    build: .
+    command: node payment-service.js
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    depends_on:
+      - rabbitmq
+    networks:
+      - eda-network
+
+networks:
+  eda-network:
+    driver: bridge
