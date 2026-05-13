@@ -75,7 +75,7 @@ for scripts :
 
 Sample of Result :
 
-![Alt text](result/user.png.png)
+![Alt text](result/user.png)
 
 ![Alt text](result/orders.png)
 
