@@ -19,6 +19,9 @@ to read summary and document report :
 and there is segmentation of each courses Scripts
 
 # Rest API and Open API
+
+To applies concept of Rest API and API documentation with OPEN-API
+
 for script : 
 
 [rest api](RESTful-API/server.js)
@@ -26,8 +29,13 @@ for script :
 [openapi](openapi/openapi.yaml)
 
 Sample of Result :
+![Alt text](result/restapi.png)
 
+![Alt text](result/openapi.png)
 # JSON-RPC
+
+To applies Request and Response with JSON-RPC concept
+
 for scripts :
 
 Server of RPC
@@ -44,17 +52,36 @@ Client of RPC
 
 Sample of Result :
 
-# Data Serilization 
+![Alt text](result/json-rpc.png)
+
+# Data Serialization 
+
+To proof and compare about JSON and XML convertion Response of API
+
 for script :
 
 [Data Serilization](data_serilization/data-s.js)
 
 Sample of Result :
-
+![Alt text](result/data-serialization.png)
 
 # Microservices and Event-Driven Architecture
 
+To Applies how service running with concept of Microservice and Event-Driven Architechture
+
+for scripts :
+
+[microservice and Event-Driven Architecture](microservice/)
+
 Sample of Result :
+
+![Alt text](result/user.png.png)
+
+![Alt text](result/orders.png)
+
+![Alt text](result/rabbitmq.png)
+
+![Alt text](result/payment.png)
 
 # Getting Started
 
@@ -66,6 +93,10 @@ to run these scripts, write and run these commands in terminal :
 
         docker compose build --no-cache
         docker compose up -d
+
+exception only for [microservice](https://github.com/ra4fi433/Interpobability_TI-3D-RPL/tree/main/uts#microservices-and-event-driven-architecture)
+
+use separated docker-compose.yaml file caused focus and specific purposes
 
 
 
