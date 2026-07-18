@@ -58,3 +58,8 @@ here the [Submitted Assignment](uts/README.md)
     Python as server and client
     PHP 8 as client
 
+# End Semester Task
+This assignment about Mid-Semester Test with tech stack in:
+
+Here the [Submited Documentation](TUBES/)
+
